@@ -1,0 +1,124 @@
+@startuml ensinet
+left to right direction
+
+' --Atores
+actor "Usuário do sistema" as sist_user
+actor "Visitante" as visitor
+actor "Estudante" as student
+actor "Educador" as prof
+actor "Administrador do sistema" as adm 
+
+' --Heranças
+sist_user <|-- visitor
+sist_user <|-- student
+student <|-- prof
+prof <|-- adm
+
+' --Casos de uso
+' Componente de gestão
+usecase "Gerenciar aulas" as UC3
+usecase "Gerenciar alunos" as UC4
+usecase "Gerenciar disciplinas" as UC6
+usecase "Gerenciar educadores" as UC7
+usecase "Gerenciar sistema" as UC8
+usecase "Escolher se uma disciplina deve ser pública ou privada" as UC9
+usecase "Encerrar período de uma disciplina" as UC11
+
+' Componente de conteúdo
+usecase "Gerenciar conteúdo" as UC12
+usecase "Criar uma disciplina" as UC13
+usecase "Disponibilizar/remover aula de uma disciplina" as UC14
+usecase "Disponibilizar/remover provas" as UC15
+usecase "Disponibilizar/remover material de apoio" as UC16
+usecase "Iniciar livestream" as UC17
+
+' Componente de usuário
+usecase "Gerenciar matrícula" as UC18
+usecase "Buscar conteúdo" as UC19
+usecase "Assistir conteúdo" as UC20
+usecase "Interagir com o conteúdo" as UC22
+usecase "Visualizar conteúdo" as UC23
+usecase "Fazer matrícula" as UC24
+usecase "Cancelar matrícula" as UC25
+usecase "Buscar aulas" as UC26
+usecase "Buscar disciplinas" as UC27
+usecase "Buscar educador" as UC28
+usecase "Assitir aula" as UC29
+usecase "Assistir livestream" as UC30
+usecase "Avaliar uma aula positivamente" as UC31
+usecase "Avaliar uma aula negativamente" as UC32
+usecase "Tirar dúvidas de uma aula" as UC33
+usecase "Trocar mensagens com um educador" as UC34
+usecase "Fazer provas" as UC35
+usecase "Listar aulas de uma disciplina" as UC36
+usecase "Listar disciplinas de um educador" as UC37
+usecase "Listar disciplinas matriculadas" as UC38
+usecase "Visualizar material de apoio de uma disciplina" as UC39
+usecase "Visualizar notas de uma disciplina" as UCNotas
+usecase "Realizar cadastro" as UC40
+usecase "Assistir aulas de disciplinas públicas" as UC41
+usecase "Assistir livestreams de disciplinas públicas" as UC42
+usecase "Interagir com os alunos" as UC43
+usecase "Listar todos os alunos matriculados em uma disciplina sua" as UC44
+usecase "Procurar aluno matriculado em uma de suas disciplinas" as UC45
+
+' --Associações
+adm --> UC8
+prof --> UC12
+prof --> UC43
+visitor --> UC40
+visitor --> UC41
+visitor --> UC42
+student --> UC18
+student --> UC19
+student --> UC20
+student --> UC22
+student --> UC23
+
+' --Extends e includes
+' Componente de gestão
+UC8--UC3:extend
+UC8--UC4:extend
+UC8--UC6:extend
+UC8--UC7:extend
+UC13--UC9:include
+UC12--UC11:extend
+
+' Componente de conteúdo
+UC12--UC13:extend
+UC12--UC14:extend
+UC12--UC15:extend
+UC12--UC16:extend
+UC12--UC17:extend
+
+' Componente de usuário
+UC18--UC24:extend
+UC18--UC25:extend
+UC19--UC26:extend
+UC19--UC27:extend
+UC19--UC28:extend
+UC20--UC29:extend
+UC20--UC30:extend
+UC22--UC31:extend
+UC22--UC32:extend
+UC22--UC33:extend
+UC22--UC34:extend
+UC22--UC35:extend
+UC23--UC36:extend
+UC23--UC37:extend
+UC23--UC38:extend
+UC23--UC39:extend
+UC23--UCNotas:extend
+UC43--UC44:extend
+UC43--UC45:extend
+
+' --Observações
+note right of UC8
+Funções: 
+Procurar;
+Visualizar;
+Remover;
+Registrar
+endnote
+
+@enduml
