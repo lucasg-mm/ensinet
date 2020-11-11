@@ -17,7 +17,7 @@ prof <|-- adm
 ' --Casos de uso
 ' Componente de gestão
 usecase "Gerenciar aulas" as UC3
-usecase "Gerenciar alunos" as UC4
+usecase "Gerenciar estudantes" as UC4
 usecase "Gerenciar disciplinas" as UC6
 usecase "Gerenciar educadores" as UC7
 usecase "Gerenciar sistema" as UC8
@@ -37,7 +37,7 @@ usecase "Gerenciar matrícula" as UC18
 usecase "Buscar conteúdo" as UC19
 usecase "Assistir conteúdo" as UC20
 usecase "Interagir com o conteúdo" as UC22
-usecase "Visualizar conteúdo" as UC23
+usecase "Listar informações" as UC23
 usecase "Fazer matrícula" as UC24
 usecase "Cancelar matrícula" as UC25
 usecase "Buscar aulas" as UC26
@@ -47,33 +47,41 @@ usecase "Assitir aula" as UC29
 usecase "Assistir livestream" as UC30
 usecase "Avaliar uma aula positivamente" as UC31
 usecase "Avaliar uma aula negativamente" as UC32
-usecase "Tirar dúvidas de uma aula" as UC33
 usecase "Trocar mensagens com um educador" as UC34
 usecase "Fazer provas" as UC35
 usecase "Listar aulas de uma disciplina" as UC36
 usecase "Listar disciplinas de um educador" as UC37
 usecase "Listar disciplinas matriculadas" as UC38
-usecase "Visualizar material de apoio de uma disciplina" as UC39
-usecase "Visualizar notas de uma disciplina" as UCNotas
+usecase "Listar material de apoio de uma disciplina" as UC39
+usecase "Listar notas do usuário em uma disciplina" as UCNotas
 usecase "Realizar cadastro" as UC40
-usecase "Assistir aulas de disciplinas públicas" as UC41
-usecase "Assistir livestreams de disciplinas públicas" as UC42
-usecase "Interagir com os alunos" as UC43
-usecase "Listar todos os alunos matriculados em uma disciplina sua" as UC44
-usecase "Procurar aluno matriculado em uma de suas disciplinas" as UC45
+usecase "Lidar com estudantes" as UC43
+usecase "Listar todos os estudantes matriculados em uma disciplina sua" as UC44
+usecase "Procurar estudante matriculado em uma de suas disciplinas" as UC45
+usecase "Trocar mensagens com um estudante" as UC46
+usecase "Avaliar conteúdo" as UC47
+usecase "Responder conteúdo" as UC48
+usecase "Submeter trabalho" as UC49
+usecase "Listar informações de uma disciplina" as UC50
+usecase "Listar informações de um educador" as UC51
+usecase "Listar informações do usuário logado" as UC52
+usecase "Listar livestreams de uma disciplina" as UC53
+usecase "Listar informações básicas" as UC54
+usecase "Listar informações de cadastro" as UC55
+usecase "Alterar informações de cadastro" as UC56
 
 ' --Associações
 adm --> UC8
 prof --> UC12
 prof --> UC43
 visitor --> UC40
-visitor --> UC41
-visitor --> UC42
+visitor --> UC20
 student --> UC18
 student --> UC19
 student --> UC20
 student --> UC22
 student --> UC23
+student --> UC56
 
 ' --Extends e includes
 ' Componente de gestão
@@ -99,24 +107,33 @@ UC19--UC27:extend
 UC19--UC28:extend
 UC20--UC29:extend
 UC20--UC30:extend
-UC22--UC31:extend
-UC22--UC32:extend
-UC22--UC33:extend
+UC22--UC48:extend
+UC22--UC47:extend
 UC22--UC34:extend
-UC22--UC35:extend
-UC23--UC36:extend
-UC23--UC37:extend
-UC23--UC38:extend
-UC23--UC39:extend
-UC23--UCNotas:extend
+UC23--UC50:extend
+UC23--UC51:extend
+UC23--UC52:extend
 UC43--UC44:extend
 UC43--UC45:extend
+UC43--UC46:extend
+UC47--UC31:extend
+UC47--UC32:extend
+UC48--UC35:extend
+UC48--UC49:extend
+UC50--UC39:extend
+UC50--UC36:extend
+UC50--UCNotas:extend
+UC50--UC53:extend
+UC51--UC37:extend
+UC51--UC54:extend
+UC52--UC38:extend
+UC52--UC55:extend
 
 ' --Observações
 note right of UC8
 Funções: 
 Procurar;
-Visualizar;
+Listar;
 Remover;
 Registrar
 endnote
