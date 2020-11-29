@@ -1,0 +1,20 @@
+@startuml realizar_cadastro
+actor Visitante
+
+Visitante-->Visitante: realizarCadastro(nome, email, senha)
+Visitante-->Cadastro: validarFormulario(nome, email, senha)
+Activate Cadastro
+
+alt validarFormulario
+Cadastro-->Cadastro: cadastrarUsuario(nome, email, senha)
+alt cadastrarUsuario
+Cadastro-->Cadastro: exibirMensagemDeSucesso
+else else
+Cadastro-->Cadastro: exibirMensagemDeErro
+end
+else else
+Cadastro-->Cadastro: exibirMensagemDeErro
+end
+deactivate Cadastro
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml diagrama_classes
+class Cadastro{
+    validarFormulario(nome: String, email: String, senha: String)
+    cadastrarUsuario(nome: String, email: String, senha: String)
+    exibirMensagemDeSucesso()
+    exibirMensagemDeErro()
+}
+
+class Visitante{
+    assistirAula(aula: Aula)
+    estaCadastrado(): boolean
+}
+
+class Aula{
+    id: long
+    nome: String
+    verificaSePrivada(): boolean
+    exibirVideo()
+    exibirMensagemErro() 
+}
+
+class Estudante{
+    id: long
+    nome: String
+    email: String
+    senha: String
+    verificaMatriculado()  
+}
+
+Estudante--|>Visitante
+Visitante"1..1"-right->"1..1"Cadastro: Utiliza
+Visitante"1..*"-right->"1..*"Aula: Assiste
+
+@enduml

@@ -1,0 +1,102 @@
+@startuml modelo-conceitual
+class Administrador{
+
+}
+
+class Aula{
+    id: long
+    númeroAvaliaçõesPositivas: int
+    númeroAvaliaçõesNegativas: int
+}
+
+class Estudante{
+    id: long
+    nome: String
+    email: String
+    senha: String
+}
+
+class Educador{
+
+}
+
+class Disciplina{
+    id: long
+}
+
+class AulaPública{
+}
+
+class LivestreamPública{
+}
+
+class Visitante{
+
+}
+
+class LivestreamPrivada{
+
+}
+
+class MaterialApoio{
+    id: long
+}
+
+class Prova{
+
+}
+
+class Trabalho{
+
+}
+
+class NotaProva{
+
+}
+
+class NotaTrabalho{
+
+}
+
+class NotaDisciplina{
+
+}
+
+class Cadastro{
+
+}
+
+class Mensagem{
+
+}
+
+class Nota{
+    id: long
+}
+
+Administrador "1..*"--"0..*" Estudante: gerencia
+Administrador --|> Educador
+Educador --|> Estudante
+Estudante --|> Visitante
+AulaPrivada --|> Aula
+AulaPública --|> Aula
+LivestreamPrivada --|> Aula
+LivestreamPública --|> Aula
+NotaDisciplina --|> Nota
+NotaProva --|> Nota
+NotaTrabalho --|> Nota
+Trabalho --|> MaterialApoio
+Prova --|> MaterialApoio
+Disciplina "1..1"*--"0..*" Aula
+Visitante "1..1"-- "1..1"Cadastro: Faz
+Estudante "1..*"--"1..*" Aula: Assiste
+Estudante "1..1"--"1..*" Nota: Recebe
+Estudante "1..*"--"1..*" MaterialApoio: Faz
+Estudante "1..1"--"1..*" Mensagem: Recebe
+Estudante "1..1"--"1..*" Mensagem: Envia
+Estudante "1..1"--"1..*" Disciplina: Matricula-se
+Educador "1..*"--"1..*" Disciplina: Cria
+Educador "1..*"--"1..*" Aula: Cria
+Educador "1..*"--"1..*" Nota: Atribui
+Visitante "1..*"--"1..*" AulaPública: Assiste
+@enduml
