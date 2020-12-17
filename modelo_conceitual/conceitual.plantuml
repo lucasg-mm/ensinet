@@ -50,22 +50,6 @@ class Trabalho{
 
 }
 
-class NotaProva{
-
-}
-
-class NotaTrabalho{
-
-}
-
-class NotaDisciplina{
-
-}
-
-class Cadastro{
-
-}
-
 class Mensagem{
 
 }
@@ -82,13 +66,9 @@ AulaPrivada --|> Aula
 AulaPública --|> Aula
 LivestreamPrivada --|> Aula
 LivestreamPública --|> Aula
-NotaDisciplina --|> Nota
-NotaProva --|> Nota
-NotaTrabalho --|> Nota
 Trabalho --|> MaterialApoio
 Prova --|> MaterialApoio
 Disciplina "1..1"*--"0..*" Aula
-Visitante "1..1"-- "1..1"Cadastro: Faz
 Estudante "1..*"--"1..*" Aula: Assiste
 Estudante "1..1"--"1..*" Nota: Recebe
 Estudante "1..*"--"1..*" MaterialApoio: Faz
