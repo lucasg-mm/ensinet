@@ -1,4 +1,4 @@
-@startuml modelo-conceitual
+@startuml modelo_conceitual
 class Administrador{
 
 }
