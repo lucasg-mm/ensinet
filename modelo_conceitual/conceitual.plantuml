@@ -58,6 +58,10 @@ class Nota{
     id: long
 }
 
+class Secretaria{
+
+}
+
 Administrador "1..*"--"0..*" Estudante: gerencia
 Administrador --|> Educador
 Educador --|> Estudante
@@ -79,4 +83,5 @@ Educador "1..*"--"1..*" Disciplina: Cria
 Educador "1..*"--"1..*" Aula: Cria
 Educador "1..*"--"1..*" Nota: Atribui
 Visitante "1..*"--"1..*" AulaPública: Assiste
+Secretaria "1..1"--"0..*" Visitante: Atende
 @enduml
