@@ -1,0 +1,17 @@
+@startuml fazer_matricula
+actor Estudante
+Estudante->"user: Estudante": 1: fazerMatricula(idDisciplina)
+activate "user: Estudante"
+"user: Estudante"->"user: Estudante": 1.1: existe = disciplinaExiste(idDisciplina) 
+alt existe
+"user: Estudante"->"user: Estudante": 1.2: sucesso = inserirDisciplinaMatriculadaNaBD(idDisciplina)
+alt sucesso
+"user: Estudante"-->Estudante: mensagemDeSucesso
+else else
+"user: Estudante"-->Estudante: mensagemDeErro
+end
+else else
+"user: Estudante"-->Estudante: mensagemDeErro
+end
+deactivate "user: Estudante"
+@enduml
