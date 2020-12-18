@@ -3,11 +3,11 @@ actor Visitante
 
 Visitante->"user: Visitante": 1: realizarCadastro(nome, email, senha)
 Activate "user: Visitante"
-"user: Visitante"->"user: Visitante": 1.1: validarDados(nome, email, senha)
+"user: Visitante"->"user: Visitante": 1.1: validou = validarDados(nome, email, senha)
 
-alt validarDados
-"user: Visitante"->"user: Visitante": 1.2: inserirUsuarioNaBD(nome, email, senha)
-alt inserirUsuarioNaBD
+alt validou
+"user: Visitante"->"user: Visitante": 1.2: sucesso = inserirUsuarioNaBD(nome, email, senha)
+alt sucesso
 "user: Visitante"-->Visitante: mensagemDeSucesso
 else else
 "user: Visitante"-->Visitante: mensagemDeErro
