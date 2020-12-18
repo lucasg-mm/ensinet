@@ -1,20 +1,20 @@
 @startuml realizar_Sistema
 actor Visitante
 
-Visitante->Secretaria: 1: realizarCadastro(nome, email, senha)
-Activate Secretaria
-Secretaria->Secretaria: 1.1: validarDados(nome, email, senha)
+Visitante->"visit: Visitante": 1: realizarCadastro(nome, email, senha)
+Activate "visit: Visitante"
+"visit: Visitante"->"visit: Visitante": 1.1: validarDados(nome, email, senha)
 
 alt validarDados
-Secretaria->Secretaria: 1.2: inserirUsuarioNaBD(nome, email, senha)
+"visit: Visitante"->"visit: Visitante": 1.2: inserirUsuarioNaBD(nome, email, senha)
 alt inserirUsuarioNaBD
-Secretaria-->Visitante: mensagemDeSucesso
+"visit: Visitante"-->Visitante: mensagemDeSucesso
 else else
-Secretaria-->Visitante: mensagemDeErro
+"visit: Visitante"-->Visitante: mensagemDeErro
 end
 else else
-Secretaria-->Visitante: mensagemDeErro
+"visit: Visitante"-->Visitante: mensagemDeErro
 end
-deactivate Secretaria
+deactivate "visit: Visitante"
 
 @enduml
