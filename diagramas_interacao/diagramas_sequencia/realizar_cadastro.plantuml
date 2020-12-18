@@ -1,4 +1,4 @@
-@startuml realizar_Sistema
+@startuml realizar_cadastro
 actor Visitante
 
 Visitante->"user: Visitante": 1: realizarCadastro(nome, email, senha)
