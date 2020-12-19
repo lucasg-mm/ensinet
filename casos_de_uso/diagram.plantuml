@@ -1,4 +1,4 @@
-@startuml ensinet
+@startuml casos_de_uso
 left to right direction
 
 ' --Atores
@@ -27,9 +27,12 @@ usecase "Encerrar período de uma disciplina" as UC11
 ' Componente de conteúdo
 usecase "Gerenciar conteúdo" as UC12
 usecase "Criar uma disciplina" as UC13
-usecase "Disponibilizar/remover aula de uma disciplina" as UC14
-usecase "Disponibilizar/remover provas" as UC15
-usecase "Disponibilizar/remover material de apoio" as UC16
+usecase "Disponibilizar aula" as UC14
+usecase "Remover aula" as RUC14
+usecase "Disponibilizar prova" as UC15
+usecase "Remover prova" as RUC15
+usecase "Disponibilizar material de apoio" as UC16
+usecase "Remover material de apoio" as RUC16
 usecase "Iniciar livestream" as UC17
 
 ' Componente de usuário
@@ -69,6 +72,7 @@ usecase "Listar livestreams de uma disciplina" as UC53
 usecase "Listar informações básicas" as UC54
 usecase "Listar informações de cadastro" as UC55
 usecase "Alterar informações de cadastro" as UC56
+usecase "Tornar-se educador" as UC57
 
 ' --Associações
 adm --> UC8
@@ -82,6 +86,7 @@ student --> UC20
 student --> UC22
 student --> UC23
 student --> UC56
+student --> UC57
 
 ' --Extends e includes
 ' Componente de gestão
@@ -95,8 +100,11 @@ UC12--UC11:extend
 ' Componente de conteúdo
 UC12--UC13:extend
 UC12--UC14:extend
+UC12--RUC14:extend
 UC12--UC15:extend
+UC12--RUC15:extend
 UC12--UC16:extend
+UC12--RUC16:extend
 UC12--UC17:extend
 
 ' Componente de usuário
