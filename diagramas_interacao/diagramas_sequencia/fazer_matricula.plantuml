@@ -2,7 +2,10 @@
 actor Estudante
 Estudante->"user: Estudante": 1: fazerMatricula(idDisciplina)
 activate "user: Estudante"
-"user: Estudante"->"user: Estudante": 1.1: existe = disciplinaExiste(idDisciplina) 
+"user: Estudante"->Disciplina: 1.1: disciplinaExiste(idDisciplina)
+activate "Disciplina"
+Disciplina-->"user: Estudante": existe 
+deactivate "Disciplina"
 alt existe
 "user: Estudante"->"user: Estudante": 1.2: sucesso = inserirDisciplinaMatriculadaNaBD(idDisciplina)
 alt sucesso
