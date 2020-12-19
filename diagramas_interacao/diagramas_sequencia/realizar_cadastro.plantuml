@@ -3,10 +3,18 @@ actor Visitante
 
 Visitante->"user: Visitante": 1: realizarCadastro(nome, email, senha)
 Activate "user: Visitante"
-"user: Visitante"->"user: Visitante": 1.1: validou = validarDados(nome, email, senha)
+"user: Visitante"->"Estudante": 1.1: validarNome(nome)
+Activate "Estudante"
+"Estudante"-->"user: Visitante": nomeOk
 
-alt validou
-"user: Visitante"->"user: Visitante": 1.2: sucesso = inserirUsuarioNaBD(nome, email, senha)
+"user: Visitante"->"Estudante": 1.2: validarEmail(email)
+"Estudante"-->"user: Visitante": emailOk
+
+"user: Visitante"->"Estudante": 1.3: validarSenha(senha)
+"Estudante"-->"user: Visitante": senhaOk
+Deactivate "Estudante"
+alt nomeOk AND emailOk AND senhaOk
+"user: Visitante"->"user: Visitante": 1.4: sucesso = inserirUsuarioNaBD(nome, email, senha)
 alt sucesso
 "user: Visitante"-->Visitante: mensagemDeSucesso
 else else
