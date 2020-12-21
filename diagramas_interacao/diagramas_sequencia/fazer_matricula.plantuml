@@ -9,12 +9,12 @@ deactivate "Disciplina"
 alt existe
 "user: Estudante"->"user: Estudante": 1.2: sucesso = inserirDisciplinaMatriculadaNaBD(idDisciplina)
 alt sucesso
-"user: Estudante"-->Estudante: mensagemDeSucesso
+"user: Estudante"-->Estudante: codigoDeSucesso
 else else
-"user: Estudante"-->Estudante: mensagemDeErro
+"user: Estudante"-->Estudante: codigoDeErro
 end
 else else
-"user: Estudante"-->Estudante: mensagemDeErro
+"user: Estudante"-->Estudante: codigoDeErro
 end
 deactivate "user: Estudante"
 @enduml

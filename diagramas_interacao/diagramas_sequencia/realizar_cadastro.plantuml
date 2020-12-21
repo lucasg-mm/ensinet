@@ -16,12 +16,12 @@ Deactivate "Estudante"
 alt nomeOk AND emailOk AND senhaOk
 "user: Visitante"->"user: Visitante": 1.4: sucesso = inserirUsuarioNaBD(nome, email, senha)
 alt sucesso
-"user: Visitante"-->Visitante: mensagemDeSucesso
+"user: Visitante"-->Visitante: codigoDeSucesso
 else else
-"user: Visitante"-->Visitante: mensagemDeErro
+"user: Visitante"-->Visitante: codigoDeErro
 end
 else else
-"user: Visitante"-->Visitante: mensagemDeErro
+"user: Visitante"-->Visitante: codigoDeErro
 end
 deactivate "user: Visitante"
 
