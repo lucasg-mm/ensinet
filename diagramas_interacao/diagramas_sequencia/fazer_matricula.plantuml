@@ -2,7 +2,7 @@
 actor Estudante
 Estudante->"user: Estudante": 1: fazerMatricula(idDisciplina)
 activate "user: Estudante"
-"user: Estudante"->Disciplina: 1.1: disciplinaExiste(idDisciplina)
+"user: Estudante"->Disciplina: 1.1: existeDisciplina(idDisciplina)
 activate "Disciplina"
 Disciplina-->"user: Estudante": existe 
 deactivate "Disciplina"
