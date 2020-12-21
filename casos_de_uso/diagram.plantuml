@@ -73,6 +73,7 @@ usecase "Listar informações básicas" as UC54
 usecase "Listar informações de cadastro" as UC55
 usecase "Alterar informações de cadastro" as UC56
 usecase "Tornar-se educador" as UC57
+usecase "Fazer login" as UC58
 
 ' --Associações
 adm --> UC8
@@ -80,6 +81,7 @@ prof --> UC12
 prof --> UC43
 visitor --> UC40
 visitor --> UC20
+visitor --> UC58
 student --> UC18
 student --> UC19
 student --> UC20
