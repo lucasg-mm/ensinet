@@ -1,34 +1,62 @@
 @startuml diagrama_classes
-class Cadastro{
-    validarFormulario(nome: String, email: String, senha: String)
-    cadastrarUsuario(nome: String, email: String, senha: String)
-    exibirMensagemDeSucesso()
-    exibirMensagemDeErro()
-}
-
-class Visitante{
-    assistirAula(aula: Aula)
-    estaCadastrado(): boolean
-}
-
-class Aula{
-    id: long
-    nome: String
-    verificaSePrivada(): boolean
-    exibirVideo()
-    exibirMensagemErro() 
-}
-
 class Estudante{
-    id: long
+    idEstudante: long
     nome: String
     email: String
     senha: String
-    verificaMatriculado()  
+    inserirDisciplinaMatriculadaNaBD(idDisciplina: long): boolean  
+    fazerMatricula(idDisciplina: long): int
+    {static}validarNome(nome: String): boolean
+    {static}validarEmail(email: String): boolean
+    {static}validarSenha(senha: String): boolean
+    verificaMatriculado(idDisciplina: long): boolean
 }
 
+class Disciplina{
+    idDisciplina: long
+    {static}existeDisciplina(idDisciplina: long): boolean
+}
+
+class Visitante{
+    realizarCadastro(nome: String, email: String, senha: String): int
+    inserirUsuarioNaBD(nome: String, email: String, senha: String): boolean    
+    assistirAula(aula: Aula): void
+    estaCadastrado(): boolean
+}
+
+class Educador{
+    disponibilizarAula(nomeDaAula: String, descricao: String, video: File, idDisciplina: long): int
+}
+
+class Aula{
+    idAula: long
+    idDisciplina: long
+    numeroAvaliacoesPositivas: int
+    numeroAvaliacoesNegativas: int
+    {static}verificaFormatoVideo(video: String): boolean
+    {static}existeAula(idAula: long): boolean
+    verificaSePrivada(): boolean
+    exibirVideo(): void
+    exibirMsgErro(mensagem: String): void 
+}
+
+' heranças
 Estudante--|>Visitante
-Visitante"1..1"-right->"1..1"Cadastro: Utiliza
-Visitante"1..*"-right->"1..*"Aula: Assiste
+Educador--|>Estudante
+
+' dependencias
+Estudante..>Disciplina: Usa
+Educador..>Disciplina: Usa  
+Educador..>Aula: Usa
+Educador..>Aula: Cria
+Visitante..>Aula: Usa
+Visitante..>Estudante: Usa
+Visitante..>Disciplina: Usa
+
+' associações
+Disciplina"1..1"*--"1..*"Aula
+Disciplina"0..*"-right->"0..*"Estudante: Possui
+Estudante"0..*"-right->"0..*"Disciplina: Matricula-se em
+Educador"1..1"-right->"0..*"Aula: Produz
 
 @enduml
