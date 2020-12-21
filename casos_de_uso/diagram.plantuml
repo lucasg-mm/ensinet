@@ -21,7 +21,6 @@ usecase "Gerenciar estudantes" as UC4
 usecase "Gerenciar disciplinas" as UC6
 usecase "Gerenciar educadores" as UC7
 usecase "Gerenciar sistema" as UC8
-usecase "Escolher se uma disciplina deve ser pública ou privada" as UC9
 usecase "Encerrar período de uma disciplina" as UC11
 
 ' Componente de conteúdo
@@ -96,7 +95,6 @@ UC8--UC3:extend
 UC8--UC4:extend
 UC8--UC6:extend
 UC8--UC7:extend
-UC13--UC9:include
 UC12--UC11:extend
 
 ' Componente de conteúdo
