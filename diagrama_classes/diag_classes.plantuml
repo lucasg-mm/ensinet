@@ -54,9 +54,9 @@ Visitante..>Estudante: Usa
 Visitante..>Disciplina: Usa
 
 ' associações
-Disciplina"1..1"*--"1..*"Aula
-Disciplina"0..*"-right->"0..*"Estudante: Possui
-Estudante"0..*"-right->"0..*"Disciplina: Matricula-se em
-Educador"1..1"-right->"0..*"Aula: Produz
+Disciplina"1..1"<-right->"1..*"Aula: Contém
+Disciplina"0..*"<-right->"0..*"Estudante: Matricula-se
+Educador"1..1"<-right->"0..*"Aula: Produz
+Educador"1..1"<-right->"0..*"Disciplina: Produz
 
 @enduml
