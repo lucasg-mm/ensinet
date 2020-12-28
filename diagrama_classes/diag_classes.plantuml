@@ -33,7 +33,7 @@ class Aula{
     idDisciplina: long
     numeroAvaliacoesPositivas: int
     numeroAvaliacoesNegativas: int
-    {static}verificaFormatoVideo(video: String): boolean
+    {static}verificaFormatoVideo(video: File): boolean
     {static}existeAula(idAula: long): boolean
     verificaSePrivada(): boolean
     exibirVideo(): void
